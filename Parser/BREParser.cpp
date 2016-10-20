@@ -1,5 +1,5 @@
 #include "BREParser.h"
-
+#include <algorithm>
 BREParser::BREParser()
 	:m_pos(-1)
 {
@@ -94,7 +94,7 @@ FA BREParser::item()
 		next();
 		return _fa;
 	}
-	else if (FA::alphabet.find(peek_next()) != std::string::npos)
+	else if (std::find(FA::alphabet.begin(), FA::alphabet.end(),peek_next()) != FA::alphabet.end())
 	{
 		return sym();
 	}

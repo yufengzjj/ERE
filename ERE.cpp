@@ -1,6 +1,6 @@
-#include "Set.h"
-#include "Automata.h"
-#include "BREParser.h"
+#include "util/Set.h"
+#include "Automata//Automata.h"
+#include "Parser/BREParser.h"
 #include "boost/program_options/options_description.hpp"
 #include "boost/program_options/parsers.hpp"
 #include "boost/program_options/variables_map.hpp"
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 		("help,h", "produce help message")
 		("expr,e", po::value<std::string>(), "set regular expression")
 		("string,s", po::value<std::string>(), "string to check by regular expression")
-		("alphabet,a", po::value<std::string>()->default_value(FA::alphabet), "set regular expression alphabet");
+		("alphabet,a", po::value<std::string>()->default_value(FA::alphabet.data()), "set regular expression alphabet");
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc, argv, desc), vm);
 	po::notify(vm);
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 	{
 		try
 		{
-			FA::set_alphabet(vm["alphabet"].as<std::string>());
+			FA::set_alphabet(vm["alphabet"].as<std::string>().c_str());
 			BREParser bre_parser;
 			bre_parser.register_event(BREParser::event::NFA_complete, event_handler);
 			bre_parser.register_event(BREParser::event::NFA_determinated, event_handler);

@@ -88,15 +88,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Automata.h" />
-    <ClInclude Include="BREParser.h" />
-    <ClInclude Include="FA.h" />
-    <ClInclude Include="Set.h" />
+    <ClCompile Include="Automata\Automata.cpp" />
+    <ClCompile Include="Automata\FA.cpp" />
+    <ClCompile Include="ERE.cpp" />
+    <ClCompile Include="Parser\BREParser.cpp" />
+    <ClCompile Include="util\Set.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BREParser.cpp" />
-    <ClCompile Include="FA.cpp" />
-    <ClCompile Include="ERE.cpp" />
+    <ClInclude Include="Automata\Automata.h" />
+    <ClInclude Include="Automata\FA.h" />
+    <ClInclude Include="Parser\BREParser.h" />
+    <ClInclude Include="util\Set.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ERE.cpp" />
+    <ClCompile Include="Parser\BREParser.cpp">
+      <Filter>Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Set.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\Automata.cpp">
+      <Filter>Automata</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata\FA.cpp">
+      <Filter>Automata</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Parser">
+      <UniqueIdentifier>{86ed5819-5bb7-496c-a427-cb4a0c39ad6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{9515bada-3a17-4266-99ae-2299b657bff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Automata">
+      <UniqueIdentifier>{9425ca9f-6075-4a9f-9c79-ec244024ac86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Parser\BREParser.h">
+      <Filter>Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Set.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="Automata\Automata.h">
+      <Filter>Automata</Filter>
+    </ClInclude>
+    <ClInclude Include="Automata\FA.h">
+      <Filter>Automata</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

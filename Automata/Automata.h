@@ -12,13 +12,13 @@
 #include <iterator>
 #include <string>
 #include <exception>
-#include "third_part/ATMPL/optional/optional.hpp"
-#include "Set.h"
+#include "../third_part/ATMPL/optional/optional.hpp"
+#include "../util/Set.h"
 template<typename _State = int, typename _Driver = char, typename _Sigma = std::string>
 class Automata
 {
 public:
-	enum { epsilon = 0 };
+	enum { epsilon = 1 };
 	enum { invalid_state = -1 };
 	//the set must impl unique insert().
 	using state_set = Set<_State>;
@@ -151,8 +151,21 @@ void Automata<_State, _Driver, _Sigma>::minimize()
 		}
 		throw AutomataException("unexpected state" + std::to_string(s_));
 	};
-	equivalence.push_front(accept_);
-	equivalence.push_front(origin - accept_);
+	if (!accept_.empty())
+	{
+		equivalence.push_front(accept_);
+
+	}
+	if (!(origin - accept_).empty())
+	{
+		equivalence.push_front(origin - accept_);
+	}
+	else
+	{
+		//in this consequence it should not use minimizing algorithm
+		return;
+	}
+	
 	bool done = false;
 	while (!done)//calculate equivalence state set
 	{
@@ -229,14 +242,15 @@ void Automata<_State, _Driver, _Sigma>::minimize()
 		}
 		auto eq_state_i = equivalence_state.begin();
 		std::advance(eq_state_i, std::distance(equivalence.begin(), eq));
+		if (!(*eq & accept_).empty())
+		{
+			ato.set_accept(*eq_state_i);
+		}
 		if (eq->find(start_) != eq->end())
 		{
 			ato.set_start(*eq_state_i);
 		}
-		else if (!(*eq & accept_).empty())
-		{
-			ato.set_accept(*eq_state_i);
-		}
+		
 
 	}
 	*this = ato;

@@ -5,8 +5,8 @@
 #include <tuple>
 #include <type_traits>
 #include <exception>
-#include "third_part/ATMPL/any/any.hpp"
-#include "FA.h"
+#include "../third_part/ATMPL/any/any.hpp"
+#include "../Automata/FA.h"
 #pragma once
 class BREParser
 {
